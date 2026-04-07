@@ -3,8 +3,9 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "@byted-tiktok/tux-web/styles.css";
 import App from "./App.tsx";
+import DevAgentation from "./components/dev_agentation";
+import { isRouterPagePath } from "./components/sys/route_switcher";
 import { ThemeProvider } from "./context/theme";
-import { isRouterPagePath } from "./components/route_switcher";
 import RouterPage from "./page/router_page";
 
 if (typeof window !== "undefined" && "ongesturestart" in window) {
@@ -30,7 +31,10 @@ if (typeof window !== "undefined" && "ongesturestart" in window) {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      {isRouterPagePath(window.location.pathname) ? <RouterPage /> : <App />}
+      <>
+        {isRouterPagePath(window.location.pathname) ? <RouterPage /> : <App />}
+        <DevAgentation />
+      </>
     </ThemeProvider>
   </StrictMode>,
 );

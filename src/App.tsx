@@ -1,33 +1,66 @@
 import "./App.css";
-import AppFrame from "./components/app_frame";
-
 import { TUXApp } from "@byted-tiktok/tux-web";
-import AppTabBarView from "./components/app_tab_bar_view";
-import RouteSwitcher from "./components/route_switcher";
-import ThemeSwitcher from "./components/theme_switcher";
-import { useTheme } from "./context/theme";
-import StatusBar from "./components/status_bar";
-
-import HomePage from "./page/home_page";
-import FriendsPage from "./page/friends_page";
-import CreationPage from "./page/creation_page";
-import InboxPage from "./page/inbox_page";
-import ProfilePage from "./page/profile_page";
-
+import { useMemo, useState } from "react";
 import {
-  TUXIconExpExp02IconHomeFill,
-  TUXIconExpExp02IconHome,
-  TUXIconExpExp02IconFriends,
-  TUXIconExpExp02IconFriendsFill,
-  TUXIconExpExp02IconInbox,
-  TUXIconExpExp02IconInboxFill,
-  TUXIconExpExp02IconProfile,
-  TUXIconExpExp02IconProfileFill,
+  IconExpExp02IconFriends,
+  IconExpExp02IconFriendsFill,
+  IconExpExp02IconHome,
+  IconExpExp02IconHomeFill,
+  IconExpExp02IconInbox,
+  IconExpExp02IconInboxFill,
+  IconExpExp02IconProfile,
+  IconExpExp02IconProfileFill,
 } from "@byted-tiktok/tux-icons";
-import CreationIcon from "./components/creation_icon";
+
+import Tabbar, { AppTabBarNav } from "./components/app/tabbar";
+import CreationIcon from "./components/app/creation_icon";
+import AppFrame from "./components/sys/app_frame";
+import RouteSwitcher from "./components/sys/route_switcher";
+import StatusBar from "./components/sys/status_bar";
+import ThemeSwitcher from "./components/sys/theme_switcher";
+import { useTheme } from "./context/theme";
+import InboxPage from "./features/inbox/pages/inbox_page";
+import CreationPage from "./page/creation_page";
+import FriendsPage from "./page/friends_page";
+import HomePage from "./page/home_page";
+import ProfilePage from "./page/profile_page";
 
 function App() {
   const { resolvedTheme } = useTheme();
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = useMemo(
+    () =>
+      [
+        {
+          icon: IconExpExp02IconHome,
+          activeIcon: IconExpExp02IconHomeFill,
+          text: "Home",
+          themeOverride: "dark",
+        },
+        {
+          icon: IconExpExp02IconFriends,
+          activeIcon: IconExpExp02IconFriendsFill,
+          text: "Friends",
+          themeOverride: "dark",
+        },
+        {
+          icon: CreationIcon,
+          activeIcon: CreationIcon,
+          themeOverride: "dark",
+        },
+        {
+          icon: IconExpExp02IconInbox,
+          activeIcon: IconExpExp02IconInboxFill,
+          text: "Inbox",
+        },
+        {
+          icon: IconExpExp02IconProfile,
+          activeIcon: IconExpExp02IconProfileFill,
+          text: "Profile",
+        },
+      ] as const,
+    [],
+  );
 
   return (
     <TUXApp theme={resolvedTheme} textDirection="ltr" platform="iOS">
@@ -35,47 +68,29 @@ function App() {
         <div className="flex flex-col h-full min-h-0">
           <StatusBar />
 
-          <AppTabBarView
+          <Tabbar
             className="flex-1 min-h-0"
+            activeIndex={activeTab}
+            onChange={setActiveTab}
             iconSize={24}
-            tabs={
-              [
-                {
-                  icon: TUXIconExpExp02IconHome,
-                  activeIcon: TUXIconExpExp02IconHomeFill,
-                  text: "Home",
-                  themeOverride: "dark",
-                },
-                {
-                  icon: TUXIconExpExp02IconFriends,
-                  activeIcon: TUXIconExpExp02IconFriendsFill,
-                  text: "Friends",
-                  themeOverride: "dark",
-                },
-                {
-                  icon: CreationIcon,
-                  activeIcon: CreationIcon,
-                  themeOverride: "dark",
-                },
-                {
-                  icon: TUXIconExpExp02IconInbox,
-                  activeIcon: TUXIconExpExp02IconInboxFill,
-                  text: "Inbox",
-                },
-                {
-                  icon: TUXIconExpExp02IconProfile,
-                  activeIcon: TUXIconExpExp02IconProfileFill,
-                  text: "Profile",
-                },
-              ] as const
-            }
+            tabBarVisible={activeTab !== 4}
+            tabs={tabs}
             pages={
               [
                 <HomePage />,
                 <FriendsPage />,
                 <CreationPage />,
                 <InboxPage />,
-                <ProfilePage />,
+                <ProfilePage
+                  bottomTabBar={
+                    <AppTabBarNav
+                      tabs={tabs}
+                      activeIndex={4}
+                      onChange={setActiveTab}
+                      iconSize={24}
+                    />
+                  }
+                />,
               ] as const
             }
           />
@@ -83,7 +98,6 @@ function App() {
       </AppFrame>
 
       <RouteSwitcher />
-
       <ThemeSwitcher />
     </TUXApp>
   );

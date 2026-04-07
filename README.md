@@ -27,6 +27,24 @@ npm run preview
 
 (`pnpm-lock.yaml` is included, so `pnpm i` / `pnpm dev` also work.)
 
+## Agentation MCP
+
+Development builds include the Agentation toolbar in the top-right corner.
+
+Start the local MCP + HTTP bridge:
+
+```bash
+npm run agentation:server
+```
+
+Verify local setup:
+
+```bash
+npm run agentation:doctor
+```
+
+The toolbar connects to `http://localhost:4747` by default. Override with `VITE_AGENTATION_ENDPOINT`.
+
 ## Core Dependencies
 
 - `@byted-tiktok/tux-web`: component library and app container via `<TUXApp />`

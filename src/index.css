@@ -5,3 +5,46 @@ html,
 body {
 	touch-action: pan-x pan-y;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+[data-agentation-toolbar].agentation-toolbar-bottom-right {
+  top: auto !important;
+  right: 1rem !important;
+  bottom: 4.75rem !important;
+  left: auto !important;
+  z-index: 60 !important;
+}
+
+@keyframes feed-music-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--music-marquee-distance, 0px)));
+  }
+}
+
+.feed-music-marquee-track {
+  display: inline-flex;
+  min-width: max-content;
+  animation-name: feed-music-marquee;
+  animation-duration: var(--music-marquee-duration, 8s);
+  animation-delay: 0.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@media (max-width: 639px) {
+  [data-agentation-toolbar].agentation-toolbar-bottom-right {
+    display: none !important;
+  }
+}

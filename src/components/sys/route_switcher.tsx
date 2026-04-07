@@ -1,9 +1,9 @@
 import { TUXMenu } from "@byted-tiktok/tux-web";
 import {
-  TUXIcon3ptHamburgerMenu,
-  TUXIconArrowRightLTR,
-  TUXIconExpExp02IconHome,
-  TUXIconRoute,
+  Icon3ptHamburgerMenu,
+  IconArrowRightLTR,
+  IconExpExp02IconHome,
+  IconRoute,
 } from "@byted-tiktok/tux-icons";
 import { useMemo, useState } from "react";
 
@@ -27,24 +27,24 @@ export default function RouteSwitcher() {
       {
         type: "item" as const,
         text: "Main App",
-        leadingIcon: <TUXIconExpExp02IconHome size={20} />,
+        leadingIcon: <IconExpExp02IconHome width={20} height={20} />,
         trailing:
           pathname === ROOT_APP_PATH ? (
             <span className="opacity-60 text-[12px]">Current</span>
           ) : (
-            <TUXIconArrowRightLTR size={16} />
+            <IconArrowRightLTR width={16} height={16} />
           ),
         onClick: () => navigateTo(ROOT_APP_PATH),
       },
       {
         type: "item" as const,
         text: "Router Page",
-        leadingIcon: <TUXIconRoute size={20} />,
+        leadingIcon: <IconRoute width={20} height={20} />,
         trailing:
           pathname === ROUTER_PAGE_PATH ? (
             <span className="opacity-60 text-[12px]">Current</span>
           ) : (
-            <TUXIconArrowRightLTR size={16} />
+            <IconArrowRightLTR width={16} height={16} />
           ),
         onClick: () => navigateTo(ROUTER_PAGE_PATH),
       },
@@ -71,7 +71,7 @@ export default function RouteSwitcher() {
               color: "var(--tux-v2-color-ui-text-1)",
             }}
           >
-            <TUXIcon3ptHamburgerMenu size={18} />
+            <Icon3ptHamburgerMenu width={18} height={18} />
             <span className="font-semibold text-[13px] leading-4">Routes</span>
           </button>
         }

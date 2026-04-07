@@ -41,7 +41,12 @@ function formatTime(date: Date) {
   }).format(date);
 }
 
-const StatusBar = () => {
+export type StatusBarProps = {
+  floating?: boolean;
+  className?: string;
+};
+
+const StatusBar = ({ floating = true, className }: StatusBarProps) => {
   const initial = useMemo(() => formatTime(new Date()), []);
   const [timeText, setTimeText] = useState(initial);
 
@@ -56,7 +61,15 @@ const StatusBar = () => {
   }, []);
 
   return (
-    <div className="hidden sm:flex justify-between px-6 pt-5.5 pb-4.5 w-full h-15.5">
+    <div
+      className={[
+        "hidden sm:flex justify-between px-6 pt-5.5 pb-4.5 w-full h-15.5",
+        floating ? "absolute top-0 inset-x-0 z-50 pointer-events-none" : "",
+        className ?? "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <span className="w-25 font-semibold text-[17px] text-tux-v2-ui-text-1 text-center leading-5.5">
         {timeText}
       </span>

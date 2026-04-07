@@ -1,6 +1,6 @@
 import { TUXSegmentedControl } from "@byted-tiktok/tux-web";
 
-import { useTheme, type ThemeMode } from "../context/theme";
+import { useTheme, type ThemeMode } from "../../context/theme";
 
 const ITEMS = [
   { itemKey: "system", title: "System" },
@@ -20,16 +20,18 @@ export default function ThemeSwitcher() {
       className="hidden sm:block right-4 bottom-4 z-50 fixed"
       aria-label="Theme"
     >
-      <TUXSegmentedControl
-        items={[...ITEMS]}
-        activeKey={mode}
-        sizePreset="small"
-        shapePreset="capsule"
-        fitContent={true}
-        onChange={(key) => {
-          if (isThemeMode(key)) setMode(key);
-        }}
-      />
+      <div className="inline-flex bg-tux-v2-ui-page-flat-1 rounded-full p-0.5">
+        <TUXSegmentedControl
+          items={[...ITEMS]}
+          activeKey={mode}
+          sizePreset="small"
+          shapePreset="capsule"
+          fitContent={true}
+          onChange={(key) => {
+            if (isThemeMode(key)) setMode(key);
+          }}
+        />
+      </div>
     </div>
   );
 }
