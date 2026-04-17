@@ -25,9 +25,13 @@ const AppFrame = (
     >
       <div
         data-app-frame-root="true"
-        style={{ backgroundColor: getColorCSSVar(backgroundColor) }}
+        style={{
+          backgroundColor: getColorCSSVar(backgroundColor),
+          width: "min(100vw, 393px)",
+          height: "min(100vh, 852px)",
+        }}
         className={[
-          "sm:top-1/2 sm:left-1/2 sm:absolute relative w-full sm:w-100.5 h-full sm:h-218.5 sm:-translate-x-1/2 sm:-translate-y-1/2",
+          "top-1/2 left-1/2 absolute overflow-hidden -translate-x-1/2 -translate-y-1/2",
           desktopTopInset ? desktopTopInsetClassName : "",
         ]
           .filter(Boolean)

@@ -38,7 +38,7 @@ export default function RouteSwitcher() {
       },
       {
         type: "item" as const,
-        text: "Router Page",
+        text: "Vibe Select",
         leadingIcon: <IconRoute width={20} height={20} />,
         trailing:
           pathname === ROUTER_PAGE_PATH ? (

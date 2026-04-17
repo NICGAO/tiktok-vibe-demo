@@ -1,7 +1,9 @@
 import { Agentation } from "agentation";
 
 export default function DevAgentation() {
-  if (!import.meta.env.DEV) {
+  const isEnabled = import.meta.env.DEV && import.meta.env.VITE_ENABLE_AGENTATION === "true";
+
+  if (!isEnabled) {
     return null;
   }
 
