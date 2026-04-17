@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       '@byted-tiktok/tux-color':
-        specifier: ^1.2.24
+        specifier: 1.2.24
         version: 1.2.24
       '@byted-tiktok/tux-icons':
-        specifier: ^2.39.51
-        version: 2.39.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 2.39.52
+        version: 2.39.52(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@byted-tiktok/tux-web':
-        specifier: ^1.5.4
+        specifier: 1.5.4
         version: 1.5.4(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gsap:
         specifier: ^3.14.2
@@ -585,12 +585,6 @@ packages:
 
   '@byted-tiktok/tux-color@1.2.24':
     resolution: {integrity: sha512-cqbaaJ/XT0+2f29gMk22o+oVSoT14JmJ042+tRIOqbk8sXUrZ4IYyHKiZWYls2UhYGSGF1vHbvcbseeOaRpNcw==}
-
-  '@byted-tiktok/tux-icons@2.39.51':
-    resolution: {integrity: sha512-Fgk93jt7OAdf2obCaLjuXZcGryjo+MJq/JgDp8kQhw5o4G9P4tcZjz5UcCfjbrevyl/E0RyLlFnfcGVy+JXaXw==}
-    peerDependencies:
-      react: '>=16.0.0'
-      react-dom: '>=16.0.1'
 
   '@byted-tiktok/tux-icons@2.39.52':
     resolution: {integrity: sha512-eNAOux6yMBSjKxA3AUk/3NbJl5rNJ0e5Y+JkB3hd+f0ZSpNpU8gPAH5TQKaQp83KwoCbq5rwW/PwFcS3thKPjg==}
@@ -3324,11 +3318,6 @@ snapshots:
       '@babel/helper-validator-identifier': 7.28.5
 
   '@byted-tiktok/tux-color@1.2.24': {}
-
-  '@byted-tiktok/tux-icons@2.39.51(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@byted-tiktok/tux-icons@2.39.52(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:

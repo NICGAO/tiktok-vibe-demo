@@ -11,9 +11,9 @@
     "agentation:doctor": "agentation-mcp doctor"
   },
   "dependencies": {
-    "@byted-tiktok/tux-color": "^1.2.24",
-    "@byted-tiktok/tux-icons": "^2.39.51",
-    "@byted-tiktok/tux-web": "^1.5.4",
+    "@byted-tiktok/tux-color": "1.2.24",
+    "@byted-tiktok/tux-icons": "2.39.52",
+    "@byted-tiktok/tux-web": "1.5.4",
     "gsap": "^3.14.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
