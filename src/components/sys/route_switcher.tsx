@@ -11,7 +11,9 @@ export const ROUTER_PAGE_PATH = "/router_page";
 export const ROOT_APP_PATH = "/";
 
 export function isRouterPagePath(pathname: string) {
-  return pathname === ROUTER_PAGE_PATH;
+  // Some hosts normalize URLs with a trailing slash (e.g. "/router_page/").
+  // Treat both as the same route.
+  return pathname === ROUTER_PAGE_PATH || pathname === `${ROUTER_PAGE_PATH}/`;
 }
 
 function navigateTo(pathname: string) {
